@@ -13,6 +13,14 @@ class Order
     update_basket(item, amount)  
   end
 
+  def remove_item(item, amount)
+    if @basket.has_key?(item)
+      @basket[item] -= amount
+    else
+      'under construction'
+    end
+  end
+
   private
   
   def update_basket(item, amount)

@@ -20,7 +20,9 @@ describe Order do
   end
   describe '#remove_item' do
     it 'removes items from the basket' do
-      
+      subject.add_item('Margherita', 2)
+      subject.remove_item('Margherita', 1)
+      expect(subject.basket).to eq({'Margherita' => 1})
     end
   end
 end
