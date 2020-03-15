@@ -12,5 +12,11 @@ describe Order do
       order.add_item('Margherita', 2)
       expect(order.basket).to eq({'Margherita' => 2})
     end
+    it 'adds an item to the order and updates the amounts' do
+      order = Order.new
+      order.add_item('Margherita', 1)
+      order.add_item('Margherita', 1)
+      expect(order.basket).to eq({'Margherita' => 2})
+    end
   end
 end
