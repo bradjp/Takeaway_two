@@ -24,5 +24,10 @@ describe Order do
       subject.remove_item('Margherita', 1)
       expect(subject.basket).to eq({'Margherita' => 1})
     end
+    it 'removes items from the basket entirely if amount is zero' do
+      subject.add_item('Margherita', 1)
+      subject.remove_item('Margherita', 1)
+      expect(subject.basket).not_to include({'Margherita' => 0})
+    end
   end
 end
