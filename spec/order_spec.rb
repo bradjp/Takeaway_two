@@ -34,4 +34,12 @@ describe Order do
       expect(subject.basket).not_to include({ 'Margherita' => 0 })
     end
   end
+  describe '#show_order' do
+    it 'Displays the current order and total' do
+      subject.add_item('Margherita', 1)
+      subject.add_item('Chips', 1)
+      subject.add_item('Mozzarella sticks', 2)
+      expect(subject.show_order()).to eq("Your order\nMargherita: 1\nChips: 1\nMozzarella sticks: 2\nTotal: £19.96")
+    end
+  end
 end

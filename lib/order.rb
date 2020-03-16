@@ -17,6 +17,19 @@ class Order
     process_item_removal(item, amount) if @basket.has_key?(item)
   end
 
+  def show_order
+    total = get_order_total()
+    "Your order\n" + @basket.map { |item, amount| "#{item}: #{amount}"}.join("\n") + "\nTotal: £#{total}"
+  end
+
+  def get_order_total()
+    total = 0
+    @basket.map do |item, amount|
+      total += Menu::MENU[item] * amount 
+    end
+    total
+  end
+
   private
   
   def update_basket(item, amount)
