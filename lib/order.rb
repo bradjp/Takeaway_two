@@ -14,15 +14,14 @@ class Order
   end
 
   def remove_item(item, amount)
-    if @basket.has_key?(item)
-      process_item_removal(item, amount)
-    end
+    process_item_removal(item, amount) if @basket.has_key?(item)
   end
 
   private
   
   def update_basket(item, amount)
-    return if Menu::MENU[item] == nil
+    return if Menu::MENU[item].nil?
+
     if @basket.has_key?(item)
       @basket[item] += amount
     else
