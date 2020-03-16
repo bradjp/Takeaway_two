@@ -22,6 +22,8 @@ class Order
     "Your order\n" + @basket.map { |item, amount| "#{item}: #{amount}"}.join("\n") + "\nTotal: £#{total}"
   end
 
+  private
+
   def get_order_total()
     total = 0
     @basket.map do |item, amount|
@@ -30,8 +32,6 @@ class Order
     total
   end
 
-  private
-  
   def update_basket(item, amount)
     return if Menu::MENU[item].nil?
 
