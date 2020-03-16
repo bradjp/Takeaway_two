@@ -2,7 +2,7 @@ require 'menu'
 
 describe Menu do  
   it 'displays a menu' do
-    expect(Menu::MENU[:Margherita]).to eq(9.99)
+    expect(Menu::MENU['Margherita']).to eq(9.99)
   end
 end
 

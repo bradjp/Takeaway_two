@@ -17,6 +17,10 @@ describe Order do
       2.times { subject.add_item('Margherita', 1) }
       expect(subject.basket).to eq({'Margherita' => 2})
     end
+    it 'will not add an item that is not on the menu' do
+      subject.add_item('Frittata', 1)
+      expect(subject.basket).not_to include({'Frittata' => 1})
+    end
   end
   describe '#remove_item' do
     it 'removes items from the basket' do

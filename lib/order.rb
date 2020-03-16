@@ -22,6 +22,7 @@ class Order
   private
   
   def update_basket(item, amount)
+    return if Menu::MENU[item] == nil
     if @basket.has_key?(item)
       @basket[item] += amount
     else
