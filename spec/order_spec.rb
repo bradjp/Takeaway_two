@@ -1,4 +1,5 @@
 require 'order'
+require 'timecop'
 
 describe Order do
 
@@ -39,7 +40,13 @@ describe Order do
       subject.add_item('Margherita', 1)
       subject.add_item('Chips', 1)
       subject.add_item('Mozzarella sticks', 2)
-      expect(subject.show_order()).to eq("Your order\nMargherita: 1\nChips: 1\nMozzarella sticks: 2\nTotal: £19.96")
+      expect(subject.show_order()).to eq("Your order\nMargherita: 1\nChips: 1\nMozzarella sticks: 2\nTotal: £19.96\n")
     end
   end
+  describe '#delivery_time' do
+    it 'returns a time 35 minutes in the future' do
+      future_time = (Time.now + (60 * 35)).strftime('%H:%M')
+      expect(subject.delivery_time).to eq(future_time)
+    end
+  end  
 end
