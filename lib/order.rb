@@ -27,29 +27,29 @@ class Order
     end
     .join("\n") + "\nTotal: £#{total}\n"
   end
-
+  
   def place_order
     puts show_order + "Has now been placed; you will be texted with a delivery time."
     text_order
     'Enjoy!'
   end
-
-  def text_order
-
-    @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
   
-    @client.messages.create(
-    from: ENV['TWILIO_NUMBER'],
-    to: ENV['TWILIO_CUSTOMER'],
-    body: "Your order has been placed! See you before #{delivery_time}" 
-    )
-  end
-
   def delivery_time
     (Time.now + (60 * 35)).strftime("%H:%M") 
   end
   
   private
+
+  def text_order
+
+    client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+  
+    client.messages.create(
+    from: ENV['TWILIO_NUMBER'],
+    to: ENV['TWILIO_CUSTOMER'],
+    body: "Your order has been placed! See you before #{delivery_time}" 
+    )
+  end
   
   def order_total
     total = 0
