@@ -19,6 +19,10 @@ class Order
     process_item_removal(item, amount) if @basket.has_key?(item)
   end
 
+  def display_menu
+    @menu.view_menu
+  end
+
   def show_order
     total = order_total
     "Your order\n" + 
