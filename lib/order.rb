@@ -33,7 +33,7 @@ class Order
   end
   
   def place_order
-    puts show_order + "Has now been placed; you will be texted with a delivery time."
+    puts show_order + "has now been placed; you will be texted with a delivery time."
     text_order
     'Enjoy!'
   end
