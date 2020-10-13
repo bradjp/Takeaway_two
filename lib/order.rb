@@ -60,7 +60,7 @@ class Order
     @basket.map do |item, amount|
       total += Menu::MENU[item] * amount 
     end
-    total
+    total.round(2)
   end
 
   def update_basket(item, amount)
